@@ -4,7 +4,7 @@ use std::{
     io::{self, Write},
 };
 
-use super::{table_writer::TableWriter, tree::Tree};
+use super::{data_writer::DataWriter, table_writer::TableWriter, tree::Tree};
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum HuffmanEncodeCreationError {
@@ -52,7 +52,11 @@ impl HuffmanEncode {
         TableWriter::new(address).write(self.tree.as_mut().unwrap().get_prefix_codes())
     }
 
-    pub fn write_data(&self, address: &mut impl Write) -> io::Result<()> {
-        todo!()
+    pub fn write_data(&mut self, address: &mut impl Write) -> io::Result<()> {
+        if self.tree.is_none() {
+            self.tree = Some(Tree::from_frequencies(&self.frequencies).unwrap());
+        }
+
+        DataWriter::new(address).write(self.tree.as_mut().unwrap().get_prefix_codes(), &self.bytes)
     }
 }

@@ -1,3 +1,4 @@
+mod data_writer;
 mod huffman_encode;
 mod node;
 mod prefix_code;
