@@ -5,6 +5,10 @@ pub struct PrefixCode {
 }
 
 impl PrefixCode {
+    pub fn new(bits: u64, len: usize) -> Self {
+        Self { bits, len }
+    }
+
     pub fn bits(&self) -> u64 {
         self.bits
     }
