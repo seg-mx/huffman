@@ -1,7 +1,6 @@
 mod data_writer;
 mod huffman_encode;
 mod node;
-mod prefix_code;
 mod table_writer;
 mod tree;
 

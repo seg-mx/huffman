@@ -3,7 +3,7 @@ use std::{
     io::{self, Write},
 };
 
-use super::prefix_code::PrefixCode;
+use crate::prefix_code::PrefixCode;
 
 pub struct DataWriter<T: Write> {
     writer: T,

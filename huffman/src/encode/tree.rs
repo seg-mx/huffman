@@ -1,9 +1,8 @@
 use std::{collections::HashMap, fmt};
 
-use super::{
-    node::{Link, Node},
-    prefix_code::PrefixCode,
-};
+use crate::prefix_code::PrefixCode;
+
+use super::node::{Link, Node};
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum TreeCreationError {
