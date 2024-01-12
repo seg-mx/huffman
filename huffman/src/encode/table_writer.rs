@@ -20,7 +20,7 @@ impl<T: Write> TableWriter<T> {
             self.writer
                 .write_all(prefix_code.len().to_string().as_bytes())?;
             self.writer.write_all(&[b';'])?;
-            self.writer.write_all(prefix_code.to_string().as_bytes())?;
+            self.writer.write_all(&prefix_code.as_bytes())?;
         }
 
         Ok(())

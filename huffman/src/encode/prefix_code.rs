@@ -1,5 +1,3 @@
-use std::fmt;
-
 #[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
 pub struct PrefixCode {
     bits: u64,
@@ -28,19 +26,18 @@ impl PrefixCode {
             bits: self.bits << 1 | 1,
         }
     }
-}
 
-impl fmt::Display for PrefixCode {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+    pub fn as_bytes(&self) -> Vec<u8> {
+        let mut bytes = Vec::new();
         let shift = (self.len - 1) / 8 * 8 + 8 - self.len;
         let bits = self.bits << shift;
         let mut len = self.len + shift;
 
         while len != 0 {
-            write!(f, "{}", (bits >> (len - 8)) as u8 as char)?;
+            bytes.push((bits >> (len - 8)) as u8);
             len -= 8;
         }
 
-        Ok(())
+        bytes
     }
 }
