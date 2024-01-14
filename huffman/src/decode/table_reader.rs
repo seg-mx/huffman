@@ -58,7 +58,7 @@ impl<T: BufRead> TableReader<T> {
         Ok(PrefixCode::new(bits, length))
     }
 
-    pub fn read(&mut self) -> Result<HashMap<u8, PrefixCode>, TableReadError> {
+    pub fn read(&mut self) -> Result<HashMap<PrefixCode, u8>, TableReadError> {
         let mut map = HashMap::new();
 
         loop {
@@ -79,7 +79,7 @@ impl<T: BufRead> TableReader<T> {
 
             let code = self.read_bits(length)?;
 
-            map.insert(character, code);
+            map.insert(code, character);
         }
 
         Ok(map)

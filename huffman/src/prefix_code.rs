@@ -1,4 +1,4 @@
-#[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Default, Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct PrefixCode {
     bits: u64,
     len: usize,
