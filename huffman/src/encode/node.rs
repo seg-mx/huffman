@@ -22,8 +22,8 @@ impl Node {
     pub fn new_with_childs(
         value: u64,
         character: Option<u8>,
-        left_child: Node,
-        right_child: Node,
+        left_child: Self,
+        right_child: Self,
     ) -> Self {
         Self {
             value,
@@ -41,11 +41,11 @@ impl Node {
         self.character
     }
 
-    pub fn left_child(&self) -> Option<&Node> {
+    pub fn left_child(&self) -> Option<&Self> {
         self.left_child.as_ref().map(|node| node.as_ref())
     }
 
-    pub fn right_child(&self) -> Option<&Node> {
+    pub fn right_child(&self) -> Option<&Self> {
         self.right_child.as_ref().map(|node| node.as_ref())
     }
 
